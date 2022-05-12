@@ -1,6 +1,5 @@
 # BabyDayBook 👶
-
-## Daily_Trends
+Data loaded from the app.
 
 ### Bottle_Feeds 🍼
 ![img](https://github.com/krystinli/BabyDayBook_Data/blob/main/img/bottle.png)
