@@ -109,8 +109,7 @@ def plot_volumes(
     """Plot daily trends.
     """
     # data in TS form
-    daily_dates = daily_df.groupby(["svt_date"]).size().reset_index(name = "drop")
-    plot_data = daily_dates
+    plot_data = daily_df.groupby(["svt_date"]).size().reset_index(name = "drop")
     for action in action_types:
         plot_data = plot_data.merge(daily_df.loc[daily_df.type == action, ["svt_date", "volume"]]
                                             .rename(columns={"volume": action}),
