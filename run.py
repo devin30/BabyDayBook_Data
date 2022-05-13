@@ -152,9 +152,9 @@ def main():
     events_log_df, daily_df = transform_data(events_log_full)
 
     # outputs:
- #   plot_daily_trend(daily_df, "bottle", "blue")
- #   plot_daily_trend(daily_df, "pump", "red")
- #   plot_daily_trend(daily_df, "diaper_change", "green")
+    plot_daily_trend(daily_df, "bottle", "blue")
+    plot_daily_trend(daily_df, "pump", "red")
+    plot_daily_trend(daily_df, "diaper_change", "green")
     plot_volumes(daily_df, ["pump", "bottle"], ["red", "blue"])
 
     # \\\\DEBUG:
