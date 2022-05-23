@@ -4,11 +4,23 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 from datetime import date, timedelta, datetime as dt
+import os
+import re
 
 def import_data():
     """Load the file into a DataFrame.
     """
-    filename = "data/BabyDaybook_20220510_auto.db"
+    file_re = re.compile(r"BabyDaybook_\d+_auto\.db")
+    files = os.listdir("data/")
+    data_files = [f for f in files if file_re.match(f)]
+    data_files.sort(reverse=True)
+    try:
+        filename = os.path.join("data",data_files[0])
+    except IndexError:
+        print("Error: No data file found")
+        raise
+
+    print(f"Found file {filename}")
 
     # set up connect to db
     with sqlite3.connect(filename) as dbcon:
