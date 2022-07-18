@@ -1,7 +1,11 @@
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
+import matplotlib.dates as mdates
+import matplotlib.cbook as cbook
 import pandas as pd
 import numpy as np
+import os
+
 
 def plot_daily_trend_new(
         daily_df,
@@ -26,6 +30,29 @@ def plot_daily_trend_new(
         columns="type",
         aggfunc=np.sum
     ).reset_index()[["svt_date", "bottle", "pump"]].fillna(0)
+
+    daily_df_freq.set_index("svt_date", inplace=True)
+    daily_df_vol.set_index("svt_date", inplace=True)
+
+    # create a static plot with matplotlib
+    fig, ax = plt.subplots()
+    fig.set_size_inches(18, 10) # img size
+
+    ax.plot(
+        "bottle",
+        data = daily_df_freq,
+        color = "black",
+        linewidth = 1,
+        marker = 'o',
+        markeredgecolor = "black",
+        markersize = 8,
+    )
+    ax.xaxis.set_major_locator(mdates.MonthLocator())
+
+    # export img
+    # plt.savefig("img/" + "bottle" + ".png")
+    # print("Generated plot for", "bottle")
+
 
 def plot_daily_trend(
         daily_df,
@@ -61,8 +88,7 @@ def plot_daily_trend(
 
     # xticks
     plt.xticks(rotation = 30)
-    for label in ax.get_xticklabels()[::2]: # hide some dates on x-axis
-        label.set_visible(False)
+    ax.xaxis.set_major_locator(mdates.MonthLocator())
 
     # export img
     plt.savefig("img/" + action_type + ".png")
@@ -107,8 +133,7 @@ def plot_volumes(
 
     # xticks
     plt.xticks(rotation = 30)
-    for label in ax.get_xticklabels()[::2]: # hide some dates on x-axis
-        label.set_visible(False)
+    ax.xaxis.set_major_locator(mdates.MonthLocator())
 
     # export img
     plt.savefig("img/" + "_".join(action_types) + "_volumes.png")
