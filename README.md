@@ -5,4 +5,4 @@ Data loaded from the app.
 ![img](img/diaper_change.png)
 
 ### Pumping and Feeding Volumes 🍼
-![img](img/pump_bottle.png)
+![img](img/pump_volume_bottle_volume.png)
