@@ -35,13 +35,7 @@ def plot_daily_trend(
     ax.set(
         xlabel = "Date",
         ylabel = "Trend",
-    )
-    ax.set_title(
-        title,
-        loc = 'left',
-        y = 0.85,
-        x = 0.02,
-        fontsize = 'medium'
+        title = title,
     )
     plt.legend(action_types)
     ax.xaxis.set_major_locator(mdates.MonthLocator())
