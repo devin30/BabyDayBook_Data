@@ -110,8 +110,18 @@ def main():
     daily_df_pivot, daily_df = transform_data(events_log_full)
 
     # Metrics: bottle, pump, diaper_change, tummy_time, bottle_volume, pump_volume
-    plot_daily_trend(daily_df_pivot, ["diaper_change"], ["green"])
-    plot_daily_trend(daily_df_pivot, ["pump", "bottle"], ["red", "blue"])
+    plot_daily_trend(
+        daily_df_pivot,
+        ["diaper_change"],
+        "Diaper Change Times/Day",
+        ["green"]
+    )
+    plot_daily_trend(
+        daily_df_pivot,
+        ["pump_volume", "bottle_volume"],
+        "Feeding and Pumping Volumes",
+        ["red", "blue"],
+    )
 
 if __name__ == "__main__":
     main()
